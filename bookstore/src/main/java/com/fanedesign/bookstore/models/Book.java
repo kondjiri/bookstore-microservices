@@ -5,11 +5,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,17 +18,34 @@ import java.time.LocalDateTime;
 
 public class Book implements Serializable {
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid",strategy = "uuid")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private String _id;
+    private Long id;
     private String title;
     private String description;
+    private String content;
+    private String edition;
+    private boolean published;
+
+    @ManyToMany
+    private List<Author> authors = new ArrayList<>();
 
 
 
     private LocalDateTime _createdAt;
     private LocalDateTime _updateAt;
+
+
+    @PrePersist
+    public  void onCreate(){
+        this._createdAt = LocalDateTime.now();
+        this._updateAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    public  void onUpdate(){
+        this._updateAt = LocalDateTime.now();
+    }
 
 
 }

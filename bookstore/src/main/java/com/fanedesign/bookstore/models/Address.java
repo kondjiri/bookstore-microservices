@@ -8,28 +8,22 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "author")
+@Entity(name = "adresse")
 
-public class Author {
-
+public class Address implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String telephone;
+    private String porte;
 
-    @ManyToMany
-    private List<Book> books = new ArrayList<>();
-   @OneToOne
-   private Address address;
+    @ManyToOne
+    private Quartier quartier;
+
 
 
     private LocalDateTime _createdAt;
