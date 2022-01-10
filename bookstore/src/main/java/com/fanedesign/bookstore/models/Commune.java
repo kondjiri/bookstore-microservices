@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 public class Commune {
     @Id
@@ -11,4 +13,7 @@ public class Commune {
     @GenericGenerator(name = "system-uuid",strategy = "uuid")
     private String _id;
     private String name;
+
+    @OneToMany
+    private  Quartier quartier;
 }
