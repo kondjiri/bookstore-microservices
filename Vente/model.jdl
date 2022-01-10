@@ -1,0 +1,17 @@
+
+entity Boutique {
+	nom String
+    createdAt LocalDate
+    updateAt LocalDate
+}
+
+entity Vente {
+	prix Double
+
+}
+
+relationship OneToMany{
+	Boutique{Vente} to Vente
+}
+
+service * with serviceImpl
