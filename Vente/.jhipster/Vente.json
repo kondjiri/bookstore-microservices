@@ -1,0 +1,27 @@
+{
+  "name": "Vente",
+  "fields": [
+    {
+      "fieldName": "prix",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "boutique",
+      "otherEntityRelationshipName": "vente",
+      "relationshipName": "boutique"
+    }
+  ],
+  "entityTableName": "vente",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20220110140551"
+}
