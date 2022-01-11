@@ -19,9 +19,10 @@ import java.util.List;
 
 public class Region implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid",strategy = "uuid")
 
-    private Long id;
+    private String _id;
     private String name;
 
     @ManyToOne
