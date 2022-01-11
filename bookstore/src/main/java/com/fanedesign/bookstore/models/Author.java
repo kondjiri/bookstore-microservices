@@ -19,8 +19,9 @@ import java.util.List;
 public class Author {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid",strategy = "uuid")
+    private String _id;
     private String firstName;
     private String lastName;
     private String email;

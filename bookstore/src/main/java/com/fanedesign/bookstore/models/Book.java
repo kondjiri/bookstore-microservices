@@ -18,12 +18,13 @@ import java.util.List;
 
 public class Book implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Long id;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid",strategy = "uuid")
+    private String _id;
     private String title;
     private String description;
     private String content;
+    private String _img;
     private String edition;
     private boolean published;
 

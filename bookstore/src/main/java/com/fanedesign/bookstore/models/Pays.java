@@ -17,8 +17,9 @@ import java.time.LocalDateTime;
 
 public class Pays implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid",strategy = "uuid")
+    private String _id;
     private String name;
 
 
